@@ -1,7 +1,5 @@
 package com.company;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Main class,
@@ -33,6 +31,7 @@ public class Main {
         Songs song4 = new Songs("YOUR LOVE", 2,"20-03-2002","Rock music to enjoy with friends",3,"rock","/path/img/cover4.jpg");
         Songs song5 = new Songs("PLASTICO", 2,"06-12-1997","Salsa music to enjoy.",3,"salsa","/path/img/cover5.jpg");
 
+        List<Songs> list= Arrays.asList(song1, song2, song3, song4, song5);
         allSongs[0] = song1;
 
 
@@ -69,36 +68,26 @@ public class Main {
                 switch (option2){
                     case 1:
                         System.out.println("WRITE THE GENRE:");
-                        option3 = getString.nextLine();
-                        if (option3.equals("SALSA")){
-                            System.out.println("1. EL CANTANTE");
-                            System.out.println("2. PLASTICO");
+                        option3 = getString.next();
+
+                        ArrayList<String> filteredResult = new ArrayList<>();
+
+                        for (Songs songs: list) {
+                            if (songs.genre.equals(option3)) {
+
+                                filteredResult.add("Name: " + songs.name + "\n" + "Duration: " + songs.duration + "\n" + "Song year: " + songs.date + "\n \n" );
+                            }
                         }
 
-                        if (option3.equals("REGGAETON")){
-                            System.out.println("1. GASOLINA");
-                        }
-
-                        if (option3.equals("POP")){
-                            System.out.println("1. BEAT IT");
-                        }
-
-                        if (option3.equals("ROCK")){
-                            System.out.println("1. YOUR LOVE");
-                        }
-
-
-                    }
-
-
-
+                        System.out.println("Filtered Result:\n"+filteredResult.toString());
+                }
                 }
 
 
 
+        }
 
 
-    }
 
     private static void songsList(String num,String name , int time, String type, String day){
         System.out.println(num + name + " \n  Duration: " + time + "  Min" + " \n  Genre: " + type + " \n  Date " + day);
@@ -113,4 +102,3 @@ public class Main {
         return getString.nextInt();
     }
 }
-
