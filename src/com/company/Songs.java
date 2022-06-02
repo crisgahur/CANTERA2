@@ -1,5 +1,4 @@
 package com.company;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,7 +21,7 @@ public class Songs {
 
     public String name;
     public int id;
-    public Date date;
+    public String date;
     public String description;
     public int duration;
     public String genre;
@@ -35,16 +34,16 @@ public class Songs {
      *
      * @param name : title of the song.
      * @param id : identification
-     * @param date : publicacion
      * @param description:
      * @param duration
      * @param genre
      * @param cover
      */
-    public Songs(String name, int id, Date date, String description, int duration, String genre, String cover) {
+    public Songs(String name, int id, String description, int duration, String genre, String cover,int day , int month , int year) {
+        Date Date = new Date();
         this.name = name;
         this.id = id;
-        this.date = date;
+        this.date = day + "/" + month +"/" + year;
         this.description = description;
         this.duration = duration;
         this.genre = genre;
