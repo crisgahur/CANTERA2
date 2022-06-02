@@ -1,5 +1,6 @@
 package com.company;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -17,22 +18,25 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner getString = new Scanner(System.in);
+    static Scanner getInt = new Scanner(System.in);
     static public int option;
+    static public int option2;
+    static public String option3;
     public static Songs[] allSongs = new Songs[5];
     public static Songs[] playList = new Songs[3];
 
     public static void main(String[] args) {
 
-        Songs song1 = new Songs("GASOLINA", 2,"20-03-2002","LOVE",3,"reggaeton","/path/img/cover1.jpg");
-        Songs song2 = new Songs("GASOLINA", 2,"20-03-2002","LOVE",3,"reggaeton","/path/img/cover1.jpg");
-        Songs song3 = new Songs("GASOLINA", 2,"20-03-2002","LOVE",3,"reggaeton","/path/img/cover1.jpg");
-        Songs song4 = new Songs("GASOLINA", 2,"20-03-2002","LOVE",3,"reggaeton","/path/img/cover1.jpg");
-        Songs song5 = new Songs("GASOLINA", 2,"20-03-2002","LOVE",3,"reggaeton","/path/img/cover1.jpg");
+        Songs song1 = new Songs("GASOLINA", 2,"20-03-2002","Reggaeton music to dance in parties",3,"reggaeton","/path/img/cover1.jpg" );
+        Songs song2 = new Songs("EL CANTANTE", 2,"12-10-1987","Salsa music to enjoy",3,"salsa","/path/img/cover2.jpg");
+        Songs song3 = new Songs("BEAT IT", 2,"23-07-1995","Pop music to dance with friends",3,"pop","/path/img/cover3.jpg");
+        Songs song4 = new Songs("YOUR LOVE", 2,"20-03-2002","Rock music to enjoy with friends",3,"rock","/path/img/cover4.jpg");
+        Songs song5 = new Songs("PLASTICO", 2,"06-12-1997","Salsa music to enjoy.",3,"salsa","/path/img/cover5.jpg");
 
         allSongs[0] = song1;
 
 
-        switch (1){
+        switch (3){
             case 1 :
                 //MAIN LIBRARY
                 songsList("1. ", song1.name, song1.duration, song1.genre, song1.date);
@@ -53,9 +57,46 @@ public class Main {
                         playList[i] = allSongs[chosenSong(song1.name, song2.name, song3.name, song4.name, song5.name)-1];
                     }
                 }
+                break;
+
+            case 3:
+                // FILTER
+                System.out.println("CHOOSE WHAT DO YOU WOULD TO FILTER:");
+                System.out.println("1. GENRE");
+                System.out.println("2. YEAR");
+                option2 = getInt.nextInt();
+
+                switch (option2){
+                    case 1:
+                        System.out.println("WRITE THE GENRE:");
+                        option3 = getString.nextLine();
+                        if (option3.equals("SALSA")){
+                            System.out.println("1. EL CANTANTE");
+                            System.out.println("2. PLASTICO");
+                        }
+
+                        if (option3.equals("REGGAETON")){
+                            System.out.println("1. GASOLINA");
+                        }
+
+                        if (option3.equals("POP")){
+                            System.out.println("1. BEAT IT");
+                        }
+
+                        if (option3.equals("ROCK")){
+                            System.out.println("1. YOUR LOVE");
+                        }
 
 
-        }
+                    }
+
+
+
+                }
+
+
+
+
 
     }
 
