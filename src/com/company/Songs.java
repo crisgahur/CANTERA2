@@ -1,6 +1,4 @@
 package com.company;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Main class,
@@ -18,7 +16,6 @@ public class Songs {
     /**
      * Declaration of attributes.
      */
-
     public String name;
     public int id;
     public String date;
@@ -26,27 +23,21 @@ public class Songs {
     public int duration;
     public String genre;
     public String cover;
-    public ArrayList<String> Songs;
 
-
-
-    /**
-     *
-     * @param name : title of the song.
-     * @param id : identification
-     * @param description:
-     * @param duration
-     * @param genre
-     * @param cover
-     */
-    public Songs(String name, int id, String description, int duration, String genre, String cover,int day , int month , int year) {
-        Date Date = new Date();
+    public Songs(String name, int id, String date, String description, int duration, String genre, String cover) {
         this.name = name;
         this.id = id;
-        this.date = day + "/" + month +"/" + year;
+        this.date = date;
         this.description = description;
         this.duration = duration;
         this.genre = genre;
         this.cover = cover;
     }
+
+    public void filterGenre(){
+
+    };
+    public void filterDate(){
+
+    };
 }
