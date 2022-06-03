@@ -4,10 +4,10 @@ package com.company;
  * Main class,
  *
  *
- * @version 1.05.003 2022-06-01.
+ * @version 1.05.003 2022-06-02.
  *
  * @author Cristian Gallego Hurtado - cris.gahur@hotmail.com
- * @author Juan Pablo Tabares Gallego - cris.gahur@hotmail.com
+ * @author Juan Pablo Tabares Gallego - juancho9615@hotmail.com
  *
  * @since 1.01.001
  */
@@ -20,7 +20,7 @@ public class Songs {
     private int id;
     private int day;
     private int month;
-    private int year;
+    private String year;
     private String description;
     private float duration;
     public String genre;
@@ -44,7 +44,7 @@ public class Songs {
         this.month = month;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -76,7 +76,7 @@ public class Songs {
         return month;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
@@ -92,7 +92,22 @@ public class Songs {
         return cover;
     }
 
-    public Songs(String name, int id, int day, int month, int year, String description, int duration, String genre, String cover) {
+    /**
+     *
+     * Constructor used to create the songs of the app music.
+     *
+     * @param name Song's name.
+     * @param id Id's name.
+     * @param day Song's date.
+     * @param month Song's date.
+     * @param year Song's date.
+     * @param description Song's description
+     * @param duration Song's duration.
+     * @param genre Song's genre.
+     * @param cover Song's cover.
+     */
+
+    public Songs(String name, int id, int day, int month, String year, String description, int duration, String genre, String cover) {
         this.name = name;
         this.id = id;
         this.date = day + "/" + month + "/" + year;

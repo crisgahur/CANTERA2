@@ -1,20 +1,24 @@
 package com.company;
 import java.util.*;
 
+
 /**
  * Main class,
  *
  *
- * @version 1.05.003 2022-06-01.
+ * @version 1.06.003 2022-06-03.
  *
  * @author Cristian Gallego Hurtado - cris.gahur@hotmail.com
- * @author Juan Pablo Tabares Gallego - cris.gahur@hotmail.com
+ * @author Juan Pablo Tabares Gallego - juancho9615@hotmail.com
  *
  * @since 1.01.001
  */
 
 public class Main {
 
+    /**
+     * Declaration of attributes used in the methods and scanner of inputs.
+     */
     static Scanner getString = new Scanner(System.in);
     static Scanner getInt = new Scanner(System.in);
     static public int option;
@@ -24,24 +28,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Songs song1 = new Songs("GASOLINA", 2,20,2,2002,"Latin music" , 5 , "reggaeton" , "/path/img/cover1.jpg" );
-        Songs song2 = new Songs("EL CANTANTE", 2,12,2,1957,"Salsa music to enjoy",4,"salsa", "/path/img/cover2.jpg");
-        Songs song3 = new Songs("BEAT IT", 2,2,10,1969,"Pop music to dance with friends",3,"pop","/path/img/cover3.jpg");
-        Songs song4 = new Songs("YOUR LOVE", 2,20,3,1960,"Rock music to enjoy with friends",3,"rock", "/path/img/cover4.jpg");
-        Songs song5 = new Songs("PLASTICO", 2,6,12,1947,"Salsa music to enjoy.", 6,"salsa","/path/img/cover5.jpg");
+        Songs song1 = new Songs("GASOLINA", 2,20,2,"2002","Latin music" , 5 , "reggaeton" , "/path/img/cover1.jpg" );
+        Songs song2 = new Songs("EL CANTANTE", 2,12,2,"1957","Salsa music to enjoy",4,"salsa", "/path/img/cover2.jpg");
+        Songs song3 = new Songs("BEAT IT", 2,2,10,"1969","Pop music to dance with friends",3,"pop","/path/img/cover3.jpg");
+        Songs song4 = new Songs("YOUR LOVE", 2,20,3,"1960","Rock music to enjoy with friends",3,"rock", "/path/img/cover4.jpg");
+        Songs song5 = new Songs("PLASTICO", 2,6,12,"1947","Salsa music to enjoy.", 6,"salsa","/path/img/cover5.jpg");
 
         List<Songs> list= Arrays.asList(song1, song2, song3, song4, song5);
         ArrayList<String> filteredResult = new ArrayList<>();
 
+        try{
         do {
-        System.out.println("Welcome to the app music, please choose what you would to do: ");
-        System.out.println("1. Show me the main library");
-        System.out.println("2. Create a new playlist");
-        System.out.println("3. Show me a playlist");
-        System.out.println("4. Desconectarse");
+
+        System.out.println("WELCOME TO THE APP MUSIC, PLEASE CHOOSE WHAT YOU WANT TO DO ");
+        System.out.println("1. SHOW ME THE MAIN LIBRARY");
+        System.out.println("2. CREATE A NEW PLAYLIST");
+        System.out.println("3. SHOW ME A PLAYLIST");
+        System.out.println("4. EXIT");
         option = getInt.nextInt();
         switch (option){
-            case 1 :
+            case 1:
                 //MAIN LIBRARY
                 songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
                 songsList("2. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
@@ -52,30 +58,64 @@ public class Main {
                 System.out.println("CHOOSE WHAT DO YOU WOULD TO FILTER:");
                 System.out.println("1. GENRE");
                 System.out.println("2. YEAR");
+                System.out.println("3. SORT BY DURATION");
+                System.out.println("4. SORT BY DATE");
+                System.out.println("5. RETURN");
                 option = getInt.nextInt();
 
                 switch (option){
                     case 1:
                 System.out.println("WRITE THE GENRE:");
-                option1 = getString.next();
+                        option1 = getString.next();
 
+                        for (Songs songs: list) {
+                            if (songs.genre.equals(option1)) {
 
-
-                for (Songs songs: list) {
-                    if (songs.genre.equals(option1)) {
-
-                        filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Year: " + songs.date + "\n \n" );
-                    }
-                }
+                                filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Year: " + songs.date + "\n \n" );
+                            }
+                            else{
+                                System.out.println("REMEMBER WRITE THE GENRE WITH LOWERCASE");
+                            }
+                        }
                         System.out.println("Filtered Result:\n"+ filteredResult.toString());
+
                         break;
 
                     case 2:
+                        System.out.println("WRITE THE YEAR:");
+                        option1 = getInt.next();
 
+                        for (Songs songs: list) {
+                            if (songs.getYear().equals(option1)) {
+
+                                filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Year: " + songs.date + "\n \n" );
+                            }
+                        }
+                        System.out.println("Filtered Result:\n"+ filteredResult.toString());
                         break;
 
-                }
+                    case 3:
+                        songsList("1. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+                        songsList("2. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
+                        songsList("3. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
+                        songsList("4. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
+                        songsList("5. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
+                        break;
 
+                    case 4:
+                        System.out.println("IT'S ORDER FROM THE MOST RECENT UNTIL THE OLDEST");
+                        songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
+                        songsList("2. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
+                        songsList("3. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
+                        songsList("4. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
+                        songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+                        break;
+
+                    case 5:
+                        continues = true;
+                        break;
+                }
+             break;
             case 2 :
 
                 System.out.println("WRITE YOURS LIBRARY'S NAME");
@@ -116,15 +156,36 @@ public class Main {
                 break;
 
         }
+
         }while(continues);
+        } catch (Exception main){
+            System.out.println("PLEASE CHOOSE AN OPTION BETWEEN 1 AND 4");
+        }
     }
 
-
-
+    /**
+     *
+     *This method help to choose the songs the user would to add at the playlist, order by date and duration.
+     *
+     * @param num: param created to assign order to the list.
+     * @param name: name of the song
+     * @param time: duration of the song
+     * @param type: Song's genre.
+     * @param day Song's date.
+     */
     private static void songsList(String num,String name , float time, String type, String day){
         System.out.println(num + name + " \n  Duration: " + time + "  Min" + " \n  Genre: " + type + " \n  Date " + day);
     }
 
+    /**
+     *
+     * @param name1
+     * @param name2
+     * @param name3
+     * @param name4
+     * @param name5
+     * @return
+     */
     private static int chosenSong(String name1, String name2, String name3 , String name4, String name5){
         System.out.println("1. " + name1);
         System.out.println("2. " + name2);
