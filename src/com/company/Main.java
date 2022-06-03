@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  * Main class,
+ *  Contains the main logic process , applying a class called Songs and some extra methods
  *
- *
- * @version 1.06.003 2022-06-03.
+ * @version 1.07.003 2022-06-03.
  *
  * @author Cristian Gallego Hurtado - cris.gahur@hotmail.com
  * @author Juan Pablo Tabares Gallego - juancho9615@hotmail.com
@@ -46,116 +46,92 @@ public class Main {
         System.out.println("3. SHOW ME A PLAYLIST");
         System.out.println("4. EXIT");
         option = getInt.nextInt();
-        switch (option){
-            case 1:
-                //MAIN LIBRARY
-                songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
-                songsList("2. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
-                songsList("3. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
-                songsList("4. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
-                songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+            switch (option) {
+                case 1 -> {
+                    //MAIN LIBRARY
+                    songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
+                    songsList("2. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
+                    songsList("3. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
+                    songsList("4. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
+                    songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+                    System.out.println("CHOOSE WHAT DO YOU WOULD TO FILTER:");
+                    System.out.println("1. GENRE");
+                    System.out.println("2. YEAR");
+                    System.out.println("3. SORT BY DURATION");
+                    System.out.println("4. SORT BY DATE");
+                    System.out.println("5. RETURN");
+                    option = getInt.nextInt();
+                    switch (option) {
+                        case 1 -> {
+                            System.out.println("WRITE THE GENRE:");
+                            option1 = getString.next();
+                            for (Songs songs : list) {
+                                if (songs.genre.equals(option1)) {
 
-                System.out.println("CHOOSE WHAT DO YOU WOULD TO FILTER:");
-                System.out.println("1. GENRE");
-                System.out.println("2. YEAR");
-                System.out.println("3. SORT BY DURATION");
-                System.out.println("4. SORT BY DATE");
-                System.out.println("5. RETURN");
-                option = getInt.nextInt();
-
-                switch (option){
-                    case 1:
-                System.out.println("WRITE THE GENRE:");
-                        option1 = getString.next();
-
-                        for (Songs songs: list) {
-                            if (songs.genre.equals(option1)) {
-
-                                filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Year: " + songs.date + "\n \n" );
+                                    filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " + "\n" + "Year: " + songs.date + "\n \n");
+                                } else {
+                                    System.out.println("REMEMBER WRITE THE GENRE WITH LOWERCASE");
+                                }
                             }
-                            else{
-                                System.out.println("REMEMBER WRITE THE GENRE WITH LOWERCASE");
-                            }
+                            System.out.println("Filtered Result:\n" + filteredResult);
                         }
-                        System.out.println("Filtered Result:\n"+ filteredResult.toString());
+                        case 2 -> {
+                            System.out.println("WRITE THE YEAR:");
+                            option1 = getInt.next();
+                            for (Songs songs : list) {
+                                if (songs.getYear().equals(option1)) {
 
-                        break;
-
-                    case 2:
-                        System.out.println("WRITE THE YEAR:");
-                        option1 = getInt.next();
-
-                        for (Songs songs: list) {
-                            if (songs.getYear().equals(option1)) {
-
-                                filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Year: " + songs.date + "\n \n" );
+                                    filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " + "\n" + "Year: " + songs.date + "\n \n");
+                                }
                             }
+                            System.out.println("Filtered Result:\n" + filteredResult);
                         }
-                        System.out.println("Filtered Result:\n"+ filteredResult.toString());
-                        break;
-
-                    case 3:
-                        songsList("1. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
-                        songsList("2. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
-                        songsList("3. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
-                        songsList("4. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
-                        songsList("5. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
-                        break;
-
-                    case 4:
-                        System.out.println("IT'S ORDER FROM THE MOST RECENT UNTIL THE OLDEST");
-                        songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
-                        songsList("2. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
-                        songsList("3. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
-                        songsList("4. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
-                        songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
-                        break;
-
-                    case 5:
-                        continues = true;
-                        break;
-                }
-             break;
-            case 2 :
-
-                System.out.println("WRITE YOURS LIBRARY'S NAME");
-                playlistName = getString.nextLine();
-                songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
-                songsList("2. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
-                songsList("3. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
-                songsList("4. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
-                songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
-                System.out.println("0. NO ADD MORE");
-
-                while(continues1){
-                System.out.println("CHOOSE THE ONES TO ADD by number: ");
-                option = getInt.nextInt();
-
-                if(option == 0){
-                    continues1 = false;
-                }else {
-                    playList[option-1] = list.get(option-1);
-                }
-                }
-                break;
-
-            case 3:
-                System.out.println("PLAYLIST: " + playlistName);
-
-                for(int i = 0; i< playList.length; i++){
-
-                    if(playList[i] != null){
-                        System.out.println(playList[i].getName() + " duration: " + playList[i].getDuration() +" Min" + " year: " + playList[i].getYear());
+                        case 3 -> {
+                            songsList("1. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+                            songsList("2. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
+                            songsList("3. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
+                            songsList("4. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
+                            songsList("5. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
+                        }
+                        case 4 -> {
+                            System.out.println("IT'S ORDER FROM THE MOST RECENT UNTIL THE OLDEST");
+                            songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
+                            songsList("2. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
+                            songsList("3. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
+                            songsList("4. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
+                            songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+                        }
+                        case 5 -> continues = true;
                     }
                 }
-                break;
+                case 2 -> {
+                    System.out.println("WRITE YOURS LIBRARY'S NAME");
+                    playlistName = getString.nextLine();
 
-            case 4:
-                System.out.println("SERVER DISCONNECTED");
-                continues = false;
-                break;
+                    while (continues1) {
+                        System.out.println("CHOOSE THE ONES TO ADD by number: ");
+                        option = chosenSong(song1.getName(),song2.getName(),song3.getName(),song4.getName(),song5.getName());
+                        if (option == 0) {
+                            continues1 = false;
+                        } else {
+                            playList[option - 1] = list.get(option - 1);
+                        }
+                    }
+                }
+                case 3 -> {
+                    System.out.println("PLAYLIST: " + playlistName);
+                    for (Songs songs : playList) {
 
-        }
+                        if (songs != null) {
+                            System.out.println(songs.getName() + " duration: " + songs.getDuration() + " Min" + " year: " + songs.getYear());
+                        }
+                    }
+                }
+                case 4 -> {
+                    System.out.println("SERVER DISCONNECTED");
+                    continues = false;
+                }
+            }
 
         }while(continues);
         } catch (Exception main){
@@ -178,20 +154,21 @@ public class Main {
     }
 
     /**
-     *
-     * @param name1
-     * @param name2
-     * @param name3
-     * @param name4
-     * @param name5
-     * @return
+     *Method to choose a song
+     * @param name1 String to change for the first song's name
+     * @param name2 String to change for the first song's name
+     * @param name3 String to change for the first song's name
+     * @param name4 String to change for the first song's name
+     * @param name5 String to change for the first song's name
+     * @return returns an int value to know the chosen song
      */
     private static int chosenSong(String name1, String name2, String name3 , String name4, String name5){
+        System.out.println("0. NO ADD MORE");
         System.out.println("1. " + name1);
         System.out.println("2. " + name2);
         System.out.println("3. " + name3);
         System.out.println("4. " + name4);
         System.out.println("5. " + name5);
-        return getString.nextInt();
+        return getInt.nextInt();
     }
 }
