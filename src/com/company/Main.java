@@ -18,9 +18,9 @@ public class Main {
     static Scanner getString = new Scanner(System.in);
     static Scanner getInt = new Scanner(System.in);
     static public int option;
-    static public String option3;
-    public static Songs[] allSongs = new Songs[5];
-    public static Songs[] playList = new Songs[3];
+    static private boolean continues = true , continues1 = true;
+    static public String option1, playlistName;
+    public static Songs[] playList = new Songs[5];
 
     public static void main(String[] args) {
 
@@ -31,9 +31,9 @@ public class Main {
         Songs song5 = new Songs("PLASTICO", 2,6,12,1947,"Salsa music to enjoy.", 6,"salsa","/path/img/cover5.jpg");
 
         List<Songs> list= Arrays.asList(song1, song2, song3, song4, song5);
-        allSongs[0] = song1;
+        ArrayList<String> filteredResult = new ArrayList<>();
 
-
+        do {
         System.out.println("Welcome to the app music, please choose what you would to do: ");
         System.out.println("1. Show me the main library");
         System.out.println("2. Create a new playlist");
@@ -57,40 +57,67 @@ public class Main {
                 switch (option){
                     case 1:
                 System.out.println("WRITE THE GENRE:");
-                option3 = getString.next();
+                option1 = getString.next();
 
-                ArrayList<String> filteredResult = new ArrayList<>();
+
 
                 for (Songs songs: list) {
-                    if (songs.genre.equals(option3)) {
+                    if (songs.genre.equals(option1)) {
 
-                        filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Song year: " + songs.date + "\n \n" );
+                        filteredResult.add("Name: " + songs.getName() + "\n" + "Duration: " + songs.getDuration() + " Min " +  "\n" + "Year: " + songs.date + "\n \n" );
                     }
                 }
-
                         System.out.println("Filtered Result:\n"+ filteredResult.toString());
+                        break;
+
+                    case 2:
+
+                        break;
 
                 }
-                 break;
-            case 2 :
-                //CREATE LIBRARY OPTION
-                System.out.println("WRITE YOURS LIBRARY'S NAME");
-                //leer nombre
 
-                for(int i = 0; i <= 3; i++){
-                    if(playList[i] == null){
-                        playList[i] = allSongs[chosenSong(song1.getName(), song2.getName(), song3.getName(), song4.getName(), song5.getName())-1];
-                    }
+            case 2 :
+
+                System.out.println("WRITE YOURS LIBRARY'S NAME");
+                playlistName = getString.nextLine();
+                songsList("1. ", song1.getName(), song1.getDuration(), song1.genre, song1.date);
+                songsList("2. ", song2.getName(), song2.getDuration(), song2.genre, song2.date);
+                songsList("3. ", song3.getName(), song3.getDuration(), song3.genre, song3.date);
+                songsList("4. ", song4.getName(), song4.getDuration(), song4.genre, song4.date);
+                songsList("5. ", song5.getName(), song5.getDuration(), song5.genre, song5.date);
+                System.out.println("0. NO ADD MORE");
+
+                while(continues1){
+                System.out.println("CHOOSE THE ONES TO ADD by number: ");
+                option = getInt.nextInt();
+
+                if(option == 0){
+                    continues1 = false;
+                }else {
+                    playList[option-1] = list.get(option-1);
+                }
                 }
                 break;
 
             case 3:
+                System.out.println("PLAYLIST: " + playlistName);
 
+                for(int i = 0; i< playList.length; i++){
+
+                    if(playList[i] != null){
+                        System.out.println(playList[i].getName() + " duration: " + playList[i].getDuration() +" Min" + " year: " + playList[i].getYear());
+                    }
                 }
+                break;
 
-
+            case 4:
+                System.out.println("SERVER DISCONNECTED");
+                continues = false;
+                break;
 
         }
+        }while(continues);
+    }
 
 
 
