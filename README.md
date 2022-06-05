@@ -21,5 +21,5 @@ Last update 06/05/2022.
 No bugs detected.
 
 # Authors
-Juan Pablo Tabares.
-Cristian Gallego. 
+- Juan Pablo Tabares.
+- Cristian Gallego. 
