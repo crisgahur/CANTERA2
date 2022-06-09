@@ -14,7 +14,8 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static int number,number2 ;
+    public static int number;
+    public static boolean continuation = true;
 
     public static void main(String[] args) {
 
@@ -22,28 +23,25 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
 
-
+ while (continuation){
         for (int i = 0; i < array.length; i++){
-
             System.out.println("Write a number");
             number = sc.nextInt();
             array[i] = number;
 
             for (int j = 0; j < array.length; j++) {
-                System.out.println("Write a number");
-                number2 = sc.nextInt();
-                array[j] = number2;
 
-                if(array[i] == array[j]){
-                    System.out.println("");
+                if(i != j && (array[i] == array[j])){
+                    System.out.println("Number Repeated \n");
+                    System.out.println("End");
+                    continuation = false;
                 }
+                else{
+                    continuation = true;
+                }
+
             }
-
-
-
-
         }
-
-
+        }
     }
 }
