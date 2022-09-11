@@ -1,0 +1,69 @@
+  body{
+    background-color: rgb(176, 189, 218);
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  .button {
+    display:block;
+    margin:auto; 
+  }
+
+  .table {
+    margin:auto; 
+  }
+
+  .form {
+    margin:auto; 
+  }
+  
+  .contenedor {
+    width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+  .img {
+    display:block;
+    margin:auto;
+  }
+
+  
+  textarea {
+    /* Alinear los campos de texto multilínea con sus etiquetas */
+    vertical-align: top;
+  
+    /* Proporcionar espacio para escribir texto */
+    height: 5em;
+  }
+
+  .form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form input {
+    width: 90%;
+    height: 30px;
+    margin: 0.5rem;
+  }
+
+  .checkboxclass{
+    text-align: center;
+    /* center checkbox horizontally */
+    vertical-align: middle;
+    /* center checkbox vertically */
+  }
+
+  
+
+
+
+
+

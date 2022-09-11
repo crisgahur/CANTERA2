@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="estilos.css" type="text/css"/>
+        <script defer src ="show&delete.js"></script>
+        <script defer src="create.js"></script>
+   <title> CONTACT LIST</title>
+    </head>
+
+    <body>
+
+<h1>Welcome to the contact list </h1>
+
+
+
+<img src="phone.jpg" alt ="cellphone" style="width:200px;height:200px;" class="img"><br><br>
+
+<button type= "button" id = "btnShow" class="button">Show the contacts</button>
+
+<button type= "button" id = "btnDelete" class="button">Delete contact</button>
+
+
+<table id="tblData" border="1" class="table">
+ 
+   <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Born date</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    
+  </table><br>
+
+  <form id="formulario" class="form">
+
+    <input name="name" type="text" placeholder="Name" id="name">
+    <input name="born" type="text" placeholder="Born date" id="born">
+    <input name="email" type="text" placeholder="Email" id="email">
+    <input name="number" type="text" placeholder="Number" id="number">
+   
+    <button type="submit" id="btnCreate">Create a contact</button>
+    <form action="./index.html">
+      
+    </form>
+
+</form>
+
+</body>
+</html>
